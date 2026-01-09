@@ -13,7 +13,7 @@ export class IndexUsuarioComponent implements OnInit {
   partidos: any[] = [];
   equipoUsuario = '';
 
-  private apiUrl = 'http://localhost:3000/api';
+  apiUrl = 'https://ligadeportiva-api.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
