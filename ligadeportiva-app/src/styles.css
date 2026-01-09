@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+.navbar-logo {
+  /* Altura fija del logo*/
+  height: 100px;
+  /* Anchura*/
+  width: 200px;
+  display: block;
+}
+/* En móviles*/
+@media (max-width: 599px) {
+  .navbar-logo {
+    height: 60px;
+    width: 120px;  
+  }
+}
+/* Transición botones de Bootstrap */
+.btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Efecto al pasar el ratón o al enfocar con teclado por accesibilidad */
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+}
+
+/* En dispositivos táctiles se evita que el efecto se quede "pegado" */
+@media (hover: none) {
+  .btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

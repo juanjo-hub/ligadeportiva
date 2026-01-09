@@ -1,0 +1,131 @@
+<main id="main-content" role="main">
+
+  <!-- HERO -->
+  <section class="py-5 bg-light border-bottom">
+    <div class="container">
+      <h1 class="display-6 fw-bold mb-3">Contacto</h1>
+      <p class="lead mb-0">
+        Ponte en contacto con la administración de la liga para resolver dudas sobre
+        inscripciones, horarios, resultados o cualquier otra consulta.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- FAQ -->
+        <div class="col-lg-6">
+          <h2 class="h4 mb-3">Preguntas frecuentes</h2>
+
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  ¿Cómo puedo inscribir a mi equipo en la liga?
+                </button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                  Las inscripciones se gestionan a través del profesorado responsable
+                  o del Departamento de Actividades Extraescolares.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  ¿Dónde se publican los horarios y resultados?
+                </button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  Los horarios, resultados y clasificaciones se publican en esta web.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  He tenido un problema durante un partido
+                </button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  Comunícalo al profesorado responsable o utiliza este formulario.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="col-lg-6">
+          <h2 class="h4 mb-3">Formulario de contacto</h2>
+
+        <form
+        novalidate
+            class="needs-validation"(submit)="enviarFormulario($event)">
+
+            <div class="mb-3">
+              <label class="form-label">Nombre y apellidos</label>
+              <input type="text" class="form-control" required>
+              <div class="invalid-feedback">Indica tu nombre.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" required>
+              <div class="invalid-feedback">Correo no válido.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Competición</label>
+              <select class="form-select" required>
+                <option value="">Selecciona</option>
+                <option value="general">General</option>
+                <option value="esports">Esports</option>
+                <option value="baloncesto">Baloncesto</option>
+                <option value="balonmano">Balonmano</option>
+              </select>
+              <div class="invalid-feedback">Selecciona una opción.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Asunto</label>
+              <input type="text" class="form-control" required maxlength="120">
+              <div class="invalid-feedback">Indica un asunto.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Mensaje</label>
+              <textarea class="form-control" rows="5" required></textarea>
+              <div class="invalid-feedback">Escribe el mensaje.</div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+              <button class="btn btn-primary" type="submit">
+                Enviar mensaje
+              </button>
+<span
+  class="small text-success"
+  *ngIf="enviado"
+  aria-live="polite">
+  Mensaje enviado correctamente.
+</span>
+
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,116 @@
+<main id="main-content" role="main">
+
+  <!-- HERO -->
+  <section class="py-5 bg-light border-bottom">
+    <div class="container">
+      <h1 class="display-6 fw-bold mb-3">Jugadores</h1>
+      <p class="lead mb-0">
+        Busca jugadores por nombre u otros atributos y consulta su ficha personal y estadística.
+      </p>
+    </div>
+  </section>
+
+  <!-- BÚSQUEDA + LISTADO -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- FILTROS -->
+        <div class="col-lg-4">
+          <h2 class="h4 mb-3">Buscar jugadores</h2>
+
+          <div class="mb-3">
+            <label class="form-label">Competición</label>
+            <select id="competitionFilter" class="form-select">
+              <option value="all">Todas</option>
+              <option value="esports">Esports</option>
+              <option value="baloncesto">Baloncesto</option>
+              <option value="balonmano">Balonmano</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Nombre o equipo</label>
+            <input id="playerSearch" type="search" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Posición</label>
+            <select id="positionFilter" class="form-select">
+              <option value="all">Todas</option>
+              <option value="defensa">Defensa</option>
+              <option value="ataque">Ataque</option>
+              <option value="capitan">Capitán/a</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- LISTADO -->
+        <div class="col-lg-8">
+          <div class="d-flex justify-content-between mb-2">
+            <h2 class="h4 mb-0">Resultados</h2>
+            <p id="playersCount" class="small text-muted mb-0">
+              Mostrando 0 jugadores
+            </p>
+          </div>
+
+          <div class="border rounded-3 bg-body-tertiary p-3">
+            <ul id="playersList" class="list-group list-group-flush"></ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal fade" id="playerModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title h4 mb-0" id="playerModalLabel"></h2>
+          <p id="playerModalSubtitle" class="mb-0 small text-muted"></p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <dl class="row mb-0">
+          <dt class="col-5">Nombre</dt>
+          <dd class="col-7" id="playerNameDetail"></dd>
+
+          <dt class="col-5">Equipo</dt>
+          <dd class="col-7" id="playerTeamDetail"></dd>
+
+          <dt class="col-5">Competición</dt>
+          <dd class="col-7">
+            <span id="playerCompetitionBadge" class="badge bg-primary"></span>
+          </dd>
+
+          <dt class="col-5">Posición</dt>
+          <dd class="col-7" id="playerPositionDetail"></dd>
+
+          <dt class="col-5">Dorsal</dt>
+          <dd class="col-7" id="playerNumberDetail"></dd>
+
+          <dt class="col-5">Grupo</dt>
+          <dd class="col-7" id="playerGroupDetail"></dd>
+        </dl>
+
+        <h3 class="h5 mt-4" id="playerStatsTitle"></h3>
+
+        <table class="table table-sm">
+          <thead>
+            <tr id="playerStatsHead"></tr>
+          </thead>
+          <tbody>
+            <tr id="playerStatsRow"></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<main id="main-content" role="main">
+
+  <!-- HERO -->
+  <section class="py-5 bg-light border-bottom" aria-labelledby="titulo-hero">
+    <div class="container d-lg-flex align-items-center">
+      <div class="col-lg-7 pe-lg-5">
+        <h1 id="titulo-hero" class="display-5 fw-bold mb-3">
+          Liga Deportiva del Instituto
+        </h1>
+        <p class="lead mb-4">
+          Resultados, clasificaciones y estadísticas en un solo lugar.
+        </p>
+        <a href="#competiciones" class="btn btn-primary btn-lg me-2">
+          Ver competiciones
+        </a>
+        <a routerLink="/register" class="btn btn-outline-secondary btn-lg">
+          Inscríbete
+        </a>
+      </div>
+
+      <div class="col-lg-5 mt-4 mt-lg-0">
+        <div class="ratio ratio-16x9 rounded-3 shadow-sm overflow-hidden">
+          <video
+            src="video-inicio.mp4"
+            class="w-100 h-100"
+            style="object-fit: cover;"
+            autoplay
+            muted
+            loop
+            playsinline>
+            Tu navegador no soporta el vídeo.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICIAS -->
+  <section class="py-5 bg-light border-top border-bottom">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h3 m-0">Noticias</h2>
+        <small id="contadorNoticias" class="text-muted">1 / 3</small>
+      </div>
+
+      <div
+        id="carruselNoticias"
+        class="carousel slide"
+        data-bs-ride="carousel">
+
+        <div class="carousel-inner rounded-3 shadow-sm">
+          <div class="carousel-item active">
+            <img src="esports.jpg" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="basket.jpg" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="tenis.jpg" class="d-block w-100">
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carruselNoticias" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carruselNoticias" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETICIONES -->
+  <section id="competiciones" class="py-5 border-top">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Esports</h3>
+              <p class="small">Competiciones digitales del centro.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Baloncesto</h3>
+              <p class="small">Liga interna en el pabellón.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Balonmano</h3>
+              <p class="small">Encuentros formativos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
