@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <h2>Partidos de mi equipo (Capitán)</h2>
+
+  <!-- SIN PARTIDOS -->
+  <div *ngIf="partidos.length === 0" class="alert alert-info mt-3">
+    No tienes partidos asignados a tu equipo.
+  </div>
+
+  <!-- LISTADO -->
+  <div *ngFor="let p of partidos" class="card mb-3">
+    <div class="card-body">
+
+      <h5 class="card-title">
+        {{ p.equipoLocal }} vs {{ p.equipoVisitante }}
+      </h5>
+
+      <p class="card-text mb-1">
+        <strong>Deporte:</strong> {{ p.deporte }}
+      </p>
+
+      <p class="card-text mb-1">
+        <strong>Fecha:</strong> {{ p.fecha }}
+      </p>
+
+      <p class="card-text mb-1">
+        <strong>Árbitro:</strong> {{ p.arbitro }}
+      </p>
+
+      <p class="card-text mb-3">
+        <strong>Ubicación:</strong> {{ p.ubicacion }}
+      </p>
+<!-- RESULTADO ACTUAL -->
+<div *ngIf="p.resultado && !p.resultadoFinal" class="alert alert-secondary">
+  Resultado actual: <strong>{{ p.resultado }}</strong>
+</div>
+
+     
+      <!-- RESULTADO DEFINITIVO -->
+        <p>Modificar Resultado:</p>
+      <div *ngIf="p.resultadoFinal">
+        <span class="badge bg-success">
+          Resultado final: {{ p.resultadoFinal }}
+        </span>
+      </div>
+
+      <!-- PENDIENTE / ENVÍO -->
+      <div *ngIf="!p.resultadoFinal">
+
+        <div *ngIf="p.estado === 'revision_admin'" class="alert alert-warning mt-2">
+          Resultado pendiente de revisión por el administrador.
+        </div>
+
+        <div class="row align-items-center mt-2">
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ej: 18-15"
+              [(ngModel)]="p.miResultado"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <button
+              class="btn btn-primary"
+              (click)="enviarResultado(p)">
+              Enviar resultado
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

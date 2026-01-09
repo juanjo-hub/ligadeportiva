@@ -1,0 +1,16 @@
+<div class="container mt-4">
+  <h2>Partidos de mi equipo</h2>
+
+  <div *ngIf="partidos.length === 0" class="alert alert-info">
+    No hay partidos para tu equipo.
+  </div>
+
+  <ul class="list-group" *ngIf="partidos.length > 0">
+    <li class="list-group-item" *ngFor="let p of partidos">
+      {{ p.equipoLocal }} vs {{ p.equipoVisitante }}
+      — {{ p.fecha }}
+      — Árbitro: {{ p.arbitro }}
+      — Resultado: {{ p.resultado || 'Pendiente' }}
+    </li>
+  </ul>
+</div>

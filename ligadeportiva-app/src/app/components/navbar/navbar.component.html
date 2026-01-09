@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary sticky-top">
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/login">
+      <img
+        src="/logo.jpg"
+        alt="Logo de la Liga Deportiva del Instituto"
+        class="navbar-logo"
+      />
+    </a>
+
+    <!-- BOTÓN HAMBURGUESA -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menuPrincipal"
+      aria-controls="menuPrincipal"
+      aria-expanded="false"
+      aria-label="Abrir menú de navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENÚ -->
+    <div id="menuPrincipal" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Inicio</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown">
+            Competiciones
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/equipos">Equipos</a></li>
+            <li><a class="dropdown-item" routerLink="/resultados">Resultados</a></li>
+            <li><a class="dropdown-item" routerLink="/clasificaciones">Clasificaciones</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/jugadores">Jugadores</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/arbitros">Árbitros</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacto">Contacto</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

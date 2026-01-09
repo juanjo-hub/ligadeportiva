@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <h2>Mis partidos asignados</h2>
+
+  <div *ngIf="partidos.length === 0" class="alert alert-info">
+    No tienes partidos asignados.
+  </div>
+
+  <ul class="list-group" *ngIf="partidos.length > 0">
+    <li class="list-group-item" *ngFor="let p of partidos">
+      <strong>{{ p.equipoLocal }}</strong> vs
+      <strong>{{ p.equipoVisitante }}</strong>
+      — {{ p.fecha }}
+      — {{ p.deporte }}
+      — {{ p.ubicacion }}
+    </li>
+  </ul>
+</div>

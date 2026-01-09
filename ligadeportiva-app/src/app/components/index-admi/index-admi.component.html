@@ -1,0 +1,161 @@
+<div class="container mt-4">
+
+  <h2 class="mb-4">Panel de administrador</h2>
+<!-- PARTIDOS EN REVISIÓN -->
+<div *ngIf="partidosRevision.length > 0" class="card border-warning mb-4">
+  <div class="card-header bg-warning fw-bold">
+    ⚠ Partidos pendientes de revisión
+  </div>
+
+  <div class="card-body">
+    <div *ngFor="let p of partidosRevision" class="mb-3 p-3 border rounded">
+
+      <h5>{{ p.equipoLocal }} vs {{ p.equipoVisitante }}</h5>
+
+      <p class="mb-1">
+        <strong>Capitán local:</strong> {{ p.resultadoLocal }}
+      </p>
+
+      <p class="mb-2">
+        <strong>Capitán visitante:</strong> {{ p.resultadoVisitante }}
+      </p>
+
+<button class="btn btn-success"
+  (click)="marcarRevisado(p)">
+  ✔ Revisado
+</button>
+
+    </div>
+  </div>
+</div>
+
+  <!-- CREAR PARTIDO -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">
+      Crear partido
+    </div>
+    <div class="card-body">
+
+      <form (ngSubmit)="crearPartido()">
+        <div class="row">
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Deporte</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="deporte" name="deporte" required />
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Ubicación</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="ubicacion" name="ubicacion" required />
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Equipo local</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="equipoLocal" name="equipoLocal" required />
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Equipo visitante</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="equipoVisitante" name="equipoVisitante" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Resultado</label>
+            <input type="text" class="form-control" [(ngModel)]="resultado" name="resultado"placeholder="Ej: 2-1"/>
+          </div>
+
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Árbitro</label>
+            <input type="text" class="form-control"
+              [(ngModel)]="arbitro" name="arbitro" required />
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Fecha</label>
+            <input type="date" class="form-control"
+              [(ngModel)]="fecha" name="fecha" required />
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Crear partido
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- EDITAR -->
+  <div class="card">
+    <div class="card-header fw-bold">
+      Editar partidos
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Deporte</th>
+            <th>Local</th>
+            <th>Visitante</th>
+            <th>Fecha</th>
+            <th>Árbitro</th>
+            <th>Resultado</th>
+            <th>Ubicación</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of partidos">
+            <td><input class="form-control form-control-sm" [(ngModel)]="p.deporte"></td>
+            <td>{{ p.equipoLocal }}</td>
+            <td>{{ p.equipoVisitante }}</td>
+            <td><input type="date" class="form-control form-control-sm" [(ngModel)]="p.fecha"></td>
+            <td><input class="form-control form-control-sm" [(ngModel)]="p.arbitro"></td>
+            <td><input class="form-control form-control-sm" [(ngModel)]="p.resultado" placeholder="Ej: 2-1"></td>
+            <td><input class="form-control form-control-sm" [(ngModel)]="p.ubicacion"></td>
+            <td>
+              <button class="btn btn-success btn-sm"
+                (click)="guardarCambios(p)">
+                Guardar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+      <!-- LISTADO -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">
+      Listado de partidos
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let partido of partidos">
+        <span class="badge bg-secondary me-2">{{ partido.deporte }}</span>
+        <strong>{{ partido.equipoLocal }}</strong>
+        vs
+        <strong>{{ partido.equipoVisitante }}</strong>
+        —
+        {{ partido.fecha }}
+        —
+        Árbitro: {{ partido.arbitro }}
+        —
+         —
+       Ubicación: {{ partido.ubicacion}}
+        —
+        <span class="text-muted">
+          {{ partido.resultado || 'Pendiente' }}
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+</div>

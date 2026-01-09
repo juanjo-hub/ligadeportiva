@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <h2>Registro de usuario</h2>
+
+  <form (ngSubmit)="register()">
+
+    <div class="mb-3">
+      <label class="form-label">Usuario</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="usuario"
+        name="usuario"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Tipo de usuario</label>
+      <select
+        class="form-select"
+        [(ngModel)]="tipo"
+        name="tipo"
+        required
+      >
+        <option value="">Selecciona tipo</option>
+        <option value="usuario">Usuario</option>
+        <option value="capitan">Capitán</option>
+        <option value="arbitro">Árbitro</option>
+        <option value="admin">Administrador</option>
+      </select>
+    </div>
+
+    <!-- SOLO PARA USUARIO Y CAPITAN -->
+    <div class="mb-3" *ngIf="tipo === 'usuario' || tipo === 'capitan'">
+      <label class="form-label">Equipo</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="equipo"
+        name="equipo"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Registrar
+    </button>
+
+  </form>
+</div>
