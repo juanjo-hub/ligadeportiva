@@ -37,7 +37,7 @@ app.get('/api/login', async (req, res) => {
       });
     }
 
-    // 🔥 CLAVE ABSOLUTA
+    //  CLAVE ABSOLUTA
     res.json({
       ok: true,
       usuario: user.usuario,
@@ -338,3 +338,41 @@ app.put('/api/partidos/:id/revisado', async (req, res) => {
   }
 });
 
+/* ================= JUGADORES ================= */
+
+// Listar todos los jugadores
+app.get('/api/jugadores', async (req, res) => {
+  try {
+    const database = await connectDB();
+    const jugadores = database.collection('jugadores');
+
+    const lista = await jugadores.find().toArray();
+
+    res.json({ ok: true, jugadores: lista });
+  } catch (error) {
+    res.status(500).json({ ok: false, error: 'Error al obtener jugadores' });
+  }
+});
+
+// Crear un jugador
+app.post('/api/jugadores', async (req, res) => {
+  try {
+    const { name, nickname, team, competition, competitionLabel, position, rol, esCapitan, number, group, stats } = req.body;
+
+    if (!name || !team || !position) {
+      return res.status(400).json({ ok: false, error: 'Datos incompletos' });
+    }
+
+    const database = await connectDB();
+    const jugadores = database.collection('jugadores');
+
+    await jugadores.insertOne({
+      name, nickname, team, competition, competitionLabel,
+      position, rol, esCapitan, number, group, stats
+    });
+
+    res.json({ ok: true, message: 'Jugador creado correctamente' });
+  } catch (error) {
+    res.status(500).json({ ok: false, error: 'Error del servidor' });
+  }
+});

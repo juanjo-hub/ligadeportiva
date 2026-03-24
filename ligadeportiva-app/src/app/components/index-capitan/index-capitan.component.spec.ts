@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { IndexCapitanComponent } from './index-capitan.component';
 
 describe('IndexCapitanComponent', () => {
@@ -8,7 +8,7 @@ describe('IndexCapitanComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IndexCapitanComponent]
+      imports: [IndexCapitanComponent,HttpClientTestingModule]
     })
     .compileComponents();
 

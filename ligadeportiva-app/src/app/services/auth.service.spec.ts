@@ -1,16 +1,41 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
+
   let service: AuthService;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [AuthService]
+    });
+
     service = TestBed.inject(AuthService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('debería hacer login (mock HTTP)', () => {
+
+    const mockResponse = { success: true };
+
+    service.login('juan', '1234').subscribe(res => {
+      expect(res).toEqual(mockResponse);
+    });
+
+    const req = httpMock.expectOne(req =>
+      req.url.includes('/login')
+    );
+
+    expect(req.request.method).toBe('GET');
+
+    req.flush(mockResponse);
   });
+
+  afterEach(() => {
+    httpMock.verify();
+  });
+
 });

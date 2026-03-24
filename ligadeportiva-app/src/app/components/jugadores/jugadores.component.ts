@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { JugadorService, Jugador } from '../../services/jugador.service';
 
 declare const bootstrap: any;
 
@@ -10,36 +11,9 @@ declare const bootstrap: any;
 })
 export class JugadoresComponent implements AfterViewInit {
 
-  playersData = [
-    {
-      id: 'p-ana-lopez',
-      name: 'Ana López',
-      nickname: 'Anix',
-      team: 'Fénix eSports',
-      competition: 'esports',
-      competitionLabel: 'Esports',
-      position: 'Capitana',
-      rol: 'ataque',
-      esCapitan: true,
-      number: 7,
-      group: '2º Bachillerato B',
-      stats: { gamesPlayed: 8, kda: '1.8' }
-    },
-    {
-      id: 'p-luis-ortega',
-      name: 'Luis Ortega',
-      nickname: 'Shield',
-      team: 'Fénix eSports',
-      competition: 'esports',
-      competitionLabel: 'Esports',
-      position: 'Support',
-      rol: 'defensa',
-      esCapitan: false,
-      number: 9,
-      group: '1º Bachillerato C',
-      stats: { gamesPlayed: 8, kda: '1.2' }
-    }
-  ];
+  // ANTES: aquí tenías el array playersData con los datos a mano
+  // AHORA: empieza vacío y se llena desde la API
+  playersData: Jugador[] = [];
 
   statsConfig: any = {
     esports: {
@@ -50,6 +24,9 @@ export class JugadoresComponent implements AfterViewInit {
       ]
     }
   };
+
+  // NUEVO: inyectamos el servicio
+  constructor(private jugadorService: JugadorService) {}
 
   ngAfterViewInit(): void {
 
@@ -99,10 +76,22 @@ export class JugadoresComponent implements AfterViewInit {
     positionFilter.onchange = pintar;
     playerSearch.oninput = pintar;
 
-    pintar();
+    // ANTES: pintar() directamente con datos hardcodeados
+    // AHORA: cargamos desde la API y luego pintamos
+    this.jugadorService.obtenerJugadores().subscribe({
+      next: (data) => {
+        this.playersData = data;
+        pintar();
+      },
+      error: (err) => {
+        console.error('Error al cargar jugadores', err);
+        playersCount.textContent = 'Error al cargar los jugadores';
+      }
+    });
   }
 
   abrirModal(jugador: any) {
+    // Este método queda exactamente igual que antes
     (document.getElementById('playerModalLabel')!).textContent = jugador.name;
     (document.getElementById('playerModalSubtitle')!).textContent =
       `${jugador.team} · ${jugador.competitionLabel}`;

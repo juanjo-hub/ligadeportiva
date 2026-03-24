@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { IndexAdmiComponent } from './index-admi.component';
 
 describe('IndexAdmiComponent', () => {
@@ -8,7 +8,7 @@ describe('IndexAdmiComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IndexAdmiComponent]
+      imports: [IndexAdmiComponent,HttpClientTestingModule]
     })
     .compileComponents();
 
